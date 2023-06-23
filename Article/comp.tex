@@ -1,20 +1,56 @@
 \documentclass{article}
 \usepackage[margin=0.5in]{geometry}
 
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\newcommand{\ov}{\overline}
+\newcommand{\cleq}{\preccurlyeq}
+\newcommand{\cgeq}{\succcurlyeq}
+\newcommand{\bdy}{\textbf{\text{Bdy}}}
+\newcommand{\trace}{\text{trace}}
+\newcommand{\dom}{\textbf{dom}}
+\newcommand{\expec}{\mathbb{E}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\usepackage{multicol}
+
 \title{Comprehensive Exam}
 \author{Criston Hyett}
 
 \begin{document}
+\twocolumn
+
 \maketitle
 
 \section{Introduction}
 \input{intro.tex}
 
+\section{Lagrangian Reduced-Order Models for Homogenous Isotropic Turbulence}
+\graphicspath{{./LDM/figs/}}
+\input{ldm.tex}
+
+\section{Delivery of Natural Gas Under Uncertainty}
+\graphicspath{{./FluxControlLinepack/}}
+\input{fluxControlLinepack.tex}
+
+\section{Differentiable Simulators for Gas-Aware Unit Commitment}
+\input{dp4ng.tex}
+
 \section{Dynamical Systems}
 
 \section{Machine Learning}
-
-\section{Application Examples}
 
 \section{Conclusion \& Prospectus}
 

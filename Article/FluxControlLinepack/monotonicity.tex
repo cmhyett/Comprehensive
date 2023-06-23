@@ -1,0 +1,9 @@
+In our scenario selection, we were intentionally coarse, preferring severe and abrupt challenges, while searching for the mildest controls for remedies. This is intentional, as previous work has given us monotonicity guarantees \cite{Vuffray2015Monotonicity,zlotnik_monotonicity_2016}. That is, we have that for any less-severe challenge (as in the more physically realistic scenario of a slow ramp down of a supply instead of our simulated near-immedate shut off), our pressures will be bounded below by the most severe case, and thus in turn our estimates for survival times are in fact lower, conservative bounds.
+
+We advocate this approach for schematic expositions as it is only with full operational and procedural knowledge that one can obtain tight estimates - that is, work inherently reliant on proprietary data.
+
+It should also be noted that monotonicity can yield bounds for the more usual scenario of pressure and linepack drift resulting from integration of stochasticity due to renewables, such drift can be seen in  Fig.\ref{fig:scen2}. However, monotonicity bounds were derived without relation to probability, thus it is likely that future work can tighten these bounds, avoiding expensive simulation except when full distributional knowledge is needed.
+
+\begin{comment}
+\misha{I suggest to also add here discussion of monotonicity. Specifically, we would like to state what it means, with reference to \cite{Vuffray2015Monotonicity,zlotnik_monotonicity_2016}, and then explain that it allows to generalize results of the use-cases just discussed significantly. Explain (on examples) that the monotonicity guarantees, in particular, that the reserve time estimated for a "larger insult" is shorter than the reserve time of a "smaller" insult. Criston, please extend this part.  Do we need an extra figure to illustrate it?}
+\end{comment}

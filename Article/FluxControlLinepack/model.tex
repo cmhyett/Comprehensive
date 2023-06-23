@@ -1,0 +1,87 @@
+We utilize dynamic modeling discussed in \cite{osiadacz_simulation_1984,steinbach_pde_2007,Chertkov2015Cascading} (see also references therein)  and specific algorithmic scheme from \cite{Gyrya2019AnExplicit} called \href{https://github.com/kaarthiksundar/GasTranSim.jl}{GasTranSim.jl} implemented by Los Alamos National Laboratory team in Julia \cite{GasTranSim}. 
+
+Basic equations, expressing conservation of mass and momentum and  describing flow of gas in a single pipe (with gas velocity much smaller than the speed of sound), are  \cite{osiadacz_simulation_1984,steinbach_pde_2007}:
+\begin{align}\label{eq:mass}
+    & \partial_t \rho + \partial_x \phi = 0,\\ \label{eq:momentum}
+    & \partial_t \phi + \partial_x p = -\frac{\lambda}{2D} \frac{\phi |\phi|}{\rho},
+\end{align}
+% \begin{align}\label{eq:mass} & \partial_t \rho + \partial_x(\rho u) = 0,\\ \label{eq:momentum}
+% & \partial_t (\rho u) + \partial_x (\rho u^2) = -\partial_x p - \lambda \rho u |u|,
+% \end{align}
+where $\rho(t;x)$, $\phi(t;x)$ and $p(t;x)$ are the gas density, mass flux and pressure measured at the moment of time $t$ at the position $x$ along the pipe; $\lambda$ is the Darcy-Weisbach friction factor of the pipe (per diameter, $D$).
+Eqs.~(\ref{eq:mass}) -(\ref{eq:momentum}) are supplemented by the equation of state, relating pressure and density
+\begin{equation}
+    p = Z(\rho,T)RT\rho
+\end{equation}
+In this study we use the CGNA formula for $Z(\rho, T)$, see e.g. \cite{menon}.
+\begin{comment}
+\begin{gather}
+\label{eq:state} p = Z RT\rho,
+\end{gather}
+where the compressibility factor, $Z$, dependent on temperature  is a function of temperature computed according to the standard CGNA formula \cite{menon}.
+%\misha{It may be better to add equation of state, comment on the choice of parameters, and cite a paper. CGNA?}.
+%We calculate the compressibility factor $Z(\rho, T)$ with the CNGA method\cite{menon}, which expresses as follows 
+\end{comment} 
+Effects of gravity and temperature variations along the system are ignored, as the effects are small and our representation is schematic
+\footnote{Taking into account the temperature variations is only important in countries with sub-zero winter temperatures. % like Canada or Russia. 
+In Israel, this is not the case and we make the assumption of a constant temperature equal to 15 Celsius degrees. Accounting for the effects of elevation/gravity is of a concern only at the node \#6, located 
+%Concerning the lack of gravity effects, the sole network point which could be problematic in the system is node 6, which is situated 
+in the Dead Sea area, roughly 400 meters below the sea level, and at the node \# 5, located close to  Beer-Sheva at 300 meters above the sea level. Given that ignorning this effect results only in a relatively minor pressure drop of $3$ to $5$ bars in the southern part of the system, we ignore it for now in the simplest version of the model.}.
+
+The single pipe description extends to a system of pipes. Each pipe is characterized by three parameters: diameter, length, and the friction factor per diameter. Each node prescribes a boundary condition for one side of (at-least) one pipe at all instances in time.
+Additionally, nodes and pipes are joined via condition of mass conservation (Kirchoff's rule, that the mass entering a junction must equal the mass exiting the junction).
+As is standard, demand nodes specify a flux withdrawal as a function of time. The system in question however, additionally specifies flux at supply nodes. Thus all supplied boundary conditions are on flux.
+
+Denoting $\rho_{ij}, \phi_{ij}$ to be the dynamic variables on the pipe from node $i$ to node $j$, and $\rho_n,\phi_n$ to be the density and flux at node $n$, we write the full system to be solved as:
+\begin{align}
+    \partial_t \rho_{ij} + \partial_x \phi_{ij} &= 0\\
+    \partial_t \phi_{ij} + \partial_x p_{ij} &= -\frac{\lambda_{ij}}{2D}\frac{\phi_{ij}|\phi_{ij}|}{\rho_{ij}}\\
+    \text{subject to initial}& \text{ and boundary conditions:} \nonumber\\
+    \rho_{ij}(x,0) &= \rho_{0,ij}(x)\\
+    \phi_{ij}(x,0) &= \phi_{0,ij}(x)\\
+    \phi_n(t) &= d_n(t)\\
+    \sum_{j \in \mathcal{E}} \phi_j S_{ij} + d_{j} &= 0
+\end{align}
+
+Where $S_{ij}$ is the cross-section of the pipe. Initial conditions for density and mass-flux in the system are constructed based on actual operational data. To solve for dynamics of mass flows and pressures across the system we use the staggered-grid approach of \cite{Gyrya2019AnExplicit} which is an explicit, conservative, second order, finite difference scheme, stable given a CFL condition is satisfied.
+We remind that, as of now, the  Israel system does not contain compressors.
+\begin{comment}
+This approach solves the governing system of PDEs, \ref{eq:governingEq1},\ref{eq:governingEq2} on two separate grids.
+
+Then, on these grids we can write \(\rho(\tau_n,\xi_j) = \rho_n^j\). Using finite difference, and defining \(\beta = \frac{\lambda L}{2D}\), we write the dynamical equations \ref{eq:governingEq1}, \ref{eq:governingEq2} in the discretized forms:
+\begin{align}
+  &\frac{\rho^{n+1}_j - \rho^n_j}{\Delta \tau} + \frac{\phi^m_{j} - \phi^m_{j-1}}{\Delta \xi} = 0\\
+  &\frac{\phi_j^{m+1} - \phi_j^m}{\Delta \tau} + \frac{\rho_{i+1}^{n+1} - \rho_i^{n+1}}{\Delta \xi} = -\beta \frac{ (\phi |\phi |)^{n+1}_j}{\rho_j^{n+1}} \approx -\beta \frac{ (\phi |\phi |)^{m+1}_j + (\phi |\phi |)^{m}_j}{\rho_{i+1}^{n+1} + \rho_{i}^{n+1}} \label{eq:discretizedMomentum}\\
+  & \qquad \implies \phi_j^{m+1} + \beta \Delta \tau \frac{ (\phi |\phi|)^{m+1}_j}{\rho_i^{n+1} + \rho_{i+1}^{n+1}} =
+    \phi_j^m - \frac{\Delta \tau}{\Delta \xi}\left( \rho^{n+1}_{i+1} - \rho_i^{n+1} \right) - \beta \Delta t \frac{ (\phi |\phi|)^{m}_j}{\rho_i^{n+1} + \rho_{i+1}^{n+1}}
+\end{align}
+
+
+We can solve the former to find an equation to advance \(\rho\):
+\begin{equation}
+  \rho^{n+1}_j = \left( \frac{\phi^m_{j-1} - \phi^m_{j}}{\Delta \xi} \right) \Delta \tau + \rho^n_j\\
+\end{equation}
+
+However, the discretized momentum equation \ref{eq:discretizedMomentum} is implicit.
+
+Labeling \(y\) as the RHS of \ref{eq:discretizedMomentum}, i.e.,
+\begin{equation}
+y = \phi_j^m - \frac{\Delta \tau}{\Delta \xi}(\rho_{i+1}^{n+1} - \rho_i^{n+1}) - \beta \Delta \tau \frac{ (\phi |\phi|)^m_j}{\rho_i^{n+1} + \rho_{i+1}^{n+1}}
+\end{equation}
+We have an equation of the form:
+\begin{align}
+  &F(x) = y \\
+  &x = \phi_j^{m+1} \\
+  F(x) = x + \beta \Delta \tau \frac{ (x |x|)}{\rho_i^{n+1} + \rho_{i+1}^{n+1}}
+\end{align}
+
+We can write the inverse of \(F\) as
+\begin{equation}
+x = F^{-1}(y) = \text{sign}(y)\frac{-1 + \sqrt{1+4a|y|}}{2a}
+\end{equation}
+
+And because we know the value of \(y\), we can readily solve for \(x := \phi_j^{m+1}\).
+
+\end{comment}
+
+
