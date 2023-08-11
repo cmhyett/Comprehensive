@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[margin=0.75in]{geometry}
+
+\title{Road Map}
+\author{Criston Hyett}
+\begin{document}
+\maketitle
+
+\abstract{This brief document details my conception of the path to graduation from the PhD. I propose a timetable for graduation, sketch papers I would like to complete before I leave the program, and lay out my professional development plan over the next year}
+
+\section{Plan of study}
+Taking the comprehensive exam so late in my career, I have no requirement left to fulfill for coursework, besides the 18 required units of Dissertation credits. I plan to take these 18 units over the next 2 semesters, and plan to graduate from the program in the Summer or Fall of 2024 - obviously subject to sufficient research progress.
+
+Sufficient academic progress will be determined by the production of papers for publication. At this time, I see 3 papers in various stages of development:
+\begin{enumerate}
+\item \underline{Lagrangian Deformation Models}: This is the paper sketched as the first half of the comprehensive paper. With this paper I hope to enrich the reduced order modeling of the Lagrangian velocity gradient tensor via physics-informed machine learning inspired by phenomenological models. This paper has promising preliminary results, and I plan to complete it before giving an oral presentation at APS Division of Fluid Dynamics conference in November. This is joint work by the University of Arizona and Los Alamos National Laboratory (LANL).
+
+\item \underline{SciML \& PDEs on Graphs}: An effort began in May 2023, I am working with the Julia organization - specifically SciML - to implement a common backend for solving PDEs on graphs. Given my research goals, I am focused particularly on hyperbolic conservation laws (such as the gas flow equations). This is primarily software engineering, with the eventual goal of being transparent for users in the modeling communities.
+  
+\item \underline{Differentiable Simulator For Dynamic \& Stochastic Optimal Gas \& Power Flows}: Motivated by rapid penetration of renewables into energy budgets, we aim to unify efficient solvers of the effective gas flow equations over networks with differentiable programming, to obtain a differentiable simulator for natural gas networks. This in turn would allow for state-of-the-art computations, of particular note is natural gas aware unit commitment in day-ahead and emergency scenarios. This paper is scheduled to be submitted to Power Systems Computation Conference, held in June of 2024. The submission deadline is September 15th. Development for this is conditioned upon completing the common backend introduced above.
+
+\item \underline{Joint modeling of Israel's Electric and Gas Networks}: Continuing collaborations between the University of Arizona and NOGA Israel, we build upon our previous individual models of the gas and electric grids by coupling the two at gas-fired power plants. Following the work proposed above, this will be mainly an application of the differentiable simulator already developed, tying into particularities of the Israel networks, and sensitive to their particular desires. This work is still on the horizon, but I hope to complete it by Summer of 2024.
+
+\item \underline{Application of Lagrangian reduced order models for wind turbine wake turbulence}: Just a dream currently, this seeks to leverage work done by our joint research group from Los Alamos National Laboratory to accelerate a medium fidelity simulation of wake turbulence to more accurately inform planning and control of wind turbine farms (on and off shore). No work has begun here, and the timeline is likely on the scale of a year.
+    
+\end{enumerate}
+
+\section{Professional Development}
+Given my short timeline for graduation, I plan to network and submit job applications vigorously in the next 9 months. As stated, I plan to attend the APS DFD and PSCC conferences, as well as the Pipeline Simulation Interest Group in May of 2024, and likely regional conferences such as those hosted in previous years by LANL.
+
+I do not hope to hold another internship, but will apply nonetheless for Summer 2024, in particular for positions that could transition into jobs.
+
+In my final semesters I plan to continue my outreach as it relates to computation in modern applied mathematics. Previous seminars given focus on various aspects of computation and software engineering for the applied mathematician including HPC, GPU/parallelization, introductions to computing languages and packages, git/version control, etc. I plan to unify these ideas in a loose set of notes and code representing a comprehensive introduction into modern computation specifically written for applied mathematicians.
+
+\end{document}
