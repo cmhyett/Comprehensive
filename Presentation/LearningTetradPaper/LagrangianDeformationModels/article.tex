@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\newcommand{\ov}{\overline}
+\newcommand{\cleq}{\preccurlyeq}
+\newcommand{\cgeq}{\succcurlyeq}
+\newcommand{\bdy}{\textbf{\text{Bdy}}}
+\newcommand{\trace}{\text{trace}}
+\newcommand{\dom}{\textbf{dom}}
+\newcommand{\expec}{\mathbb{E}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xspace}
+\usepackage{url,comment,bm}
+
+% please pick visible and different from others colours - see list at the end of the page https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX
+\newcommand{\misha}[1]{{\color{Maroon} Misha says: #1\xspace}}
+
+\newcommand{\todo}[1]{{\color{Red} TODO: #1\xspace}}
+
+
+\title{Velocity gradient prediction using parameterized Lagrangian deformation models}
+
+\author{Criston Hyett, Yifeng Tian, Michael Woodward, Misha Stepanov,\\ Chris Fryer, Michael Chertkov, Daniel Livescu}
+
+\graphicspath{{../}}
+\begin{document}
+\maketitle
+\abstract{
+\input{abstract}
+}
+
+\section{Introduction}
+\input{introduction.tex}
+
+\section{Previous Work}
+\input{previousWork.tex}
+
+\section{Methodology}
+\input{methodology.tex}
+
+\section{Results}
+\input{results.tex}
+
+\section{Conclusion}
+\input{conclusion.tex}
+
+\section{Appendix}
+\input{appendix.tex}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

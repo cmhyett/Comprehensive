@@ -1,0 +1,50 @@
+This section is a work-in-progress. I talk more about this in the prospectus, and welcome comments and ideas.
+
+\subsection{Proposed Models}
+Our approach is to utilize the idea of biasing the statistics of the conditional deviatoric pressure Hessian using the history of the VGT (as in the RDGF, RFD, and Tetrad models), while avoiding postulating the exact functional form; instead allowing it to be data-driven using PIML (as in TBNN model).
+
+We do this by augmenting the inputs to the feed-forward portion of the TBNN, the idea being to bias the statistics of the invariants, while believing that the tensors derived from the local-in-time VGT are sufficient to span the function space.
+
+    % \item \textbf{RDGF with TBNN output as upstream condition}
+    
+    % The most logical next step in this progression of deformation models is to enrich the RDGF model using the output of the TBNN. That is, eq(\ref{eq:rdgf_upstream}) becomes
+    % \begin{equation} \label{eq:tbnn_rdgf_upstream}
+    %     \langle \tilde{P}_{ij} | A \rangle \approx \frac{1}{3} \langle \tilde{P}_{kk} | A \rangle \delta_{ij} + \sum_{n=1}^{10} g_\theta^{(n)}(\lambda_1, \dots, \lambda_5)T^{(n)}
+    % \end{equation}
+    
+    % We believe this has the potential to enrich both models, as Tian et.al, found the different values of parameters in eq(\ref{eq:rdgf_coefs}), and importantly has access to distributions of those parameters. Further, the un-truncated tensor basis has the ability to better represent strongly intermittent conditions. On the other hand, the RDGF model ties this prediction to the local fluid deformation, incorporating temporal information to the local-in-time TBNN.
+\subsubsection{Temporal Convolution}
+The simplest of our proposed models augments the set of invariants using a learned temporal convolution
+\begin{equation} \label{eq:tc_pred}
+  \hat{H} = \sum_{n=1}^{10} g_\theta^{(n)}(\lambda_1, \dots, \lambda_5, C)T^{(n)}
+\end{equation}
+with
+\begin{equation}
+    C(t) = \sum_{t_f}^{t_f-\Delta t \cdot n} \zeta_n A_n
+\end{equation}
+where $\zeta_n$ are learned simultaneously with the parameterization of the scalar $g$ functions.
+
+This model avoids biasing the prediction with phenomenological theory, but at the cost of a computational overhead. However, because of the simple structure, the learned $\zeta$'s may inform a temporal correlation in the VGT that is useful in the prediction of the deviatoric pressure Hessian. An extreme case of very short time correlations would reinforce the hypothesis presented in RDGF, while longer temporal correlations would support the modeling approaches of e.g., \cite{tian2021_MZ}.
+
+\subsubsection{Time-Ordered Exponential}
+Finally, we may take an intermediate step between the two and consider, as a hypothesis, replacing $C$ in Eq.~(\ref{eq:tc_pred}) by the time-ordered exponential 
+\begin{equation}
+    W(t) = \text{Texp}\left(\int\limits_0^t dt' A(t')\right)
+\end{equation}
+\misha{Criston, I have attempted to clean notations ... $X$ is already introduced as an initial position for a Lagrangian particle ... I am suggesting to use $C$ for the temporal convolution and $W(t)$ for the time-ordered exponential.}
+
+\subsection{Data Analysis}
+In this section we perform numerical studies on DNS data to evaluate assumptions and choices for model hyperparameters. 
+
+\subsubsection{Ground Truth Data}
+Our data is DNS of forced isotropic turbulence with $Re = 240$. Eularian data is generated, random points are sampled, VGT and pressure Hessian are constructed at these points using interpolation, and Lagrangian trajectories of these quantities are advanced using the Eularian velocity fields. We have 122k samples, each advanced for 1000 timesteps with $\Delta t = 3e-4$, representing approximately half an inertial eddy turnover time. For each sample and each timestep, we have measured VGT, PH, and viscous terms.
+
+\subsubsection{Cramer Functions of Strain Rate Eigenvalues}
+Coarsely stated, the Cramer function (also more generally called the rate function) determines how quickly large deviations from a mean diminish. If we believe in the ability to close the equations for the deviatoric pressure Hessian locally, it is apparent that there must exist a relation between temporal correlations of the strain-rate tensor, and temporal correlations of the deviatoric pressure Hessian.
+
+\subsubsection{Gaussian Upstream Condition}
+The Gaussian upstream condition present in RDGF is convenient, but for short deformation time is known to be inaccurate. Via analysis of Lagrangian data, we can evaluate how long the deformation time must be to transform the Gaussian upstream condition to a distribution representative of fully developed turbulence. In particular, we can evaluate
+\begin{equation}
+    \min_{\Delta t} \ \norm{P^{(d)}_{gt} - P'^{(d)}_{\text{Gaussian}}(\Delta t)}
+\end{equation}
+where $P'^{(d)}_{\text{Gaussian}}(\Delta t)$ is the true deformation of the Gaussian upstream condition, by the ground truth VGT over a time $\Delta t$.

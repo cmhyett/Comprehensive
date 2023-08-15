@@ -1,0 +1,22 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'presentation.blg'
+[54] biber:322> INFO - === Mon Aug 14, 2023, 21:02:33
+[63] Biber.pm:415> INFO - Reading 'presentation.bcf'
+[110] Biber.pm:943> INFO - Found 4 citekeys in bib section 0
+[119] Biber.pm:4256> INFO - Processing section 0
+[119] Utils.pm:75> INFO - Globbing data source 'NOGA-UA-gas/bib/gas.bib'
+[119] Utils.pm:91> INFO - Globbed data source 'NOGA-UA-gas/bib/gas.bib' to NOGA-UA-gas/bib/gas.bib
+[119] Utils.pm:75> INFO - Globbing data source 'LearningTetradPaper/refs.bib'
+[119] Utils.pm:91> INFO - Globbed data source 'LearningTetradPaper/refs.bib' to LearningTetradPaper/refs.bib
+[128] Biber.pm:4455> INFO - Looking for bibtex format file 'NOGA-UA-gas/bib/gas.bib' for section 0
+[129] bibtex.pm:1653> INFO - LaTeX decoding ...
+[136] bibtex.pm:1471> INFO - Found BibTeX data source 'NOGA-UA-gas/bib/gas.bib'
+[142] Biber.pm:4455> INFO - Looking for bibtex format file 'LearningTetradPaper/refs.bib' for section 0
+[143] bibtex.pm:1653> INFO - LaTeX decoding ...
+[187] bibtex.pm:1471> INFO - Found BibTeX data source 'LearningTetradPaper/refs.bib'
+[219] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[219] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[219] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[220] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[221] bbl.pm:652> INFO - Writing 'presentation.bbl' with encoding 'UTF-8'
+[223] bbl.pm:755> INFO - Output to presentation.bbl

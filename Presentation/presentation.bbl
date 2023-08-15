@@ -1,0 +1,168 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{ohkitani1995}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8cbb9bd1bc99f007e31fde15c804d425}{%
+           family={Ohkitani},
+           familyi={O\bibinitperiod},
+           given={Koji},
+           giveni={K\bibinitperiod}}}%
+        {{hash=e5b1ce09437050b0433b8f9eb8a7ca43}{%
+           family={Kishiba},
+           familyi={K\bibinitperiod},
+           given={Seigo},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Institute of Physics}%
+      }
+      \strng{namehash}{871d67a91588e30448959a987ade71b2}
+      \strng{fullhash}{871d67a91588e30448959a987ade71b2}
+      \strng{bibnamehash}{871d67a91588e30448959a987ade71b2}
+      \strng{authorbibnamehash}{871d67a91588e30448959a987ade71b2}
+      \strng{authornamehash}{871d67a91588e30448959a987ade71b2}
+      \strng{authorfullhash}{871d67a91588e30448959a987ade71b2}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics of Fluids}
+      \field{number}{2}
+      \field{title}{Nonlocal nature of vortex stretching in an inviscid fluid}
+      \field{volume}{7}
+      \field{year}{1995}
+      \field{pages}{411\bibrangedash 421}
+      \range{pages}{11}
+    \endentry
+    \entry{pope1975}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0df85bf2c259df7fdc0a9a5bccfc8fd1}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={S.\bibnamedelimi B.},
+           giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \strng{fullhash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \strng{bibnamehash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \strng{authorbibnamehash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \strng{authornamehash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \strng{authorfullhash}{0df85bf2c259df7fdc0a9a5bccfc8fd1}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{2}
+      \field{title}{A more general effective-viscosity hypothesis}
+      \field{volume}{72}
+      \field{year}{1975}
+      \field{pages}{331\bibrangedash 340}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1017/S0022112075003382
+      \endverb
+    \endentry
+    \entry{tian2021}{article}{}
+      \name{author}{3}{}{%
+        {{hash=460ccfa6233ccd00d3c1a2bf6e9765f3}{%
+           family={Tian},
+           familyi={T\bibinitperiod},
+           given={Yifeng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=daef2cdb67050d8052eb24d18dd25c59}{%
+           family={Livescu},
+           familyi={L\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=46998e4a225376d42b55b09ea1f2fe5a}{%
+           family={Chertkov},
+           familyi={C\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{4c6733027d6408cb504d05f94e039a98}
+      \strng{fullhash}{25ea7aa38a6c3815184bc6829e35b61b}
+      \strng{bibnamehash}{25ea7aa38a6c3815184bc6829e35b61b}
+      \strng{authorbibnamehash}{25ea7aa38a6c3815184bc6829e35b61b}
+      \strng{authornamehash}{4c6733027d6408cb504d05f94e039a98}
+      \strng{authorfullhash}{25ea7aa38a6c3815184bc6829e35b61b}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Fluids}
+      \field{number}{9}
+      \field{title}{Physics-informed machine learning of the Lagrangian dynamics of velocity gradient tensor}
+      \field{volume}{6}
+      \field{year}{2021}
+      \true{nocite}
+      \field{pages}{094607}
+      \range{pages}{1}
+    \endentry
+    \entry{chertkov1999}{article}{}
+      \name{author}{3}{}{%
+        {{hash=46998e4a225376d42b55b09ea1f2fe5a}{%
+           family={Chertkov},
+           familyi={C\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=799413ca9ee3ddfde8eb0139d079b6c5}{%
+           family={Pumir},
+           familyi={P\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod}}}%
+        {{hash=319619a7953595c6f523174d787474ef}{%
+           family={Shraiman},
+           familyi={S\bibinitperiod},
+           given={Boris\bibnamedelima I.},
+           giveni={B\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{9b09213b6a7c17182e85bfa1af7e1bdc}
+      \strng{fullhash}{38f8ea35b8a54d443852935eaa2f98ff}
+      \strng{bibnamehash}{38f8ea35b8a54d443852935eaa2f98ff}
+      \strng{authorbibnamehash}{38f8ea35b8a54d443852935eaa2f98ff}
+      \strng{authornamehash}{9b09213b6a7c17182e85bfa1af7e1bdc}
+      \strng{authorfullhash}{38f8ea35b8a54d443852935eaa2f98ff}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics of Fluids}
+      \field{number}{8}
+      \field{title}{Lagrangian tetrad dynamics and the phenomenology of turbulence}
+      \field{volume}{11}
+      \field{year}{1999}
+      \true{nocite}
+      \field{pages}{2394\bibrangedash 2410}
+      \range{pages}{17}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

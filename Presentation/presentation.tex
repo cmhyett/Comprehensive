@@ -1,0 +1,113 @@
+%-------------------- Document-wide settings --------------------%
+\documentclass[aspectratio=1610,12pt,dvipsnames]{beamer}
+
+\usepackage[font=small,skip=2pt]{caption}
+\captionsetup[figure]{labelformat=empty}
+
+\usetheme{Warsaw}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\usepackage{listings,graphicx,verbatimbox,hyperref}
+\usepackage{hyperref}
+%\usepackage{bibentry}
+% \usepackage[customcolors,shade]{hf-tikz}
+% \usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+  \colorlet{cb@saved}{.}%
+  \color#1{#2}%
+  \boxed{%
+    \color{cb@saved}%
+    #3%
+  }%
+  \endgroup
+}
+
+\usepackage[style=nature]{biblatex}
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\printnames[family-given]{labelname}%
+   \hspace{1mm} \printfield{journaltitle}%
+   \hspace{1mm} \printfield{year}}
+  {\addsemicolon\space}
+  {\usebibmacro{postnote}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\newcommand{\ov}{\overline}
+\newcommand{\cleq}{\preccurlyeq}
+\newcommand{\cgeq}{\succcurlyeq}
+\newcommand{\bdy}{\textbf{\text{Bdy}}}
+\newcommand{\trace}{\text{trace}}
+\newcommand{\dom}{\textbf{dom}}
+\newcommand{\expec}{\mathbb{E}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+\date{\today}
+
+\addbibresource{NOGA-UA-gas/bib/gas.bib}
+\addbibresource{LearningTetradPaper/refs.bib}
+
+\begin{document}
+%------------------------------------------------------------------%
+
+%-------------------- Presentation big picture --------------------%
+\input{big_picture.tex}
+
+%-------------------- NOGA UA Gas Modeling ------------------------%
+\input{gas.tex}
+
+%-------------------- Turbulence ----------------------------------%
+\input{ldm.tex}
+
+%-------------------- References ----------------------------------%
+\begin{frame}[allowframebreaks]{References}
+  \nocite{tian2021}
+  \nocite{chertkov1999}
+  \printbibliography
+   
+    % \bibliographystyle{plain}
+    % \bibliography{NOGA-UA-gas/bib/gas}
+    % \end{tiny}
+\end{frame}
+% -----------------------------------------------------------------%
+
+\end{document}
